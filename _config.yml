@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: erienniu
+title: Erieniu
 subtitle: 昨日种种，譬如昨日死；以后种种，譬如今日生。
 description:
 keywords:
-author: John Doe
+author: Erien
 language: zh-CN
 timezone:
 
@@ -39,8 +39,8 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
-  line_number: true
+  enable: false
+  line_number: false
   auto_detect: false
   tab_replace:
   
@@ -85,4 +85,6 @@ deploy:
 
 Search:
   Path: search.xml
-  Field: all
+  Field: post
+  format: html
+  limit: 10000
