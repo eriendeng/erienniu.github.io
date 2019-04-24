@@ -188,4 +188,10 @@ func main(){
 }
 ```
 
-呼~长舒一口气~
+呼~长舒一口气
+
+#### 参考资料
+
+* [什么是动态规划？动态规划的意义是什么？](https://www.zhihu.com/question/23995189/answer/613096905)
+* [使用斐波那契数列引入了动态规划的概念](https://www.cnblogs.com/liweiwei1419/p/8616113.html)
+* [动态规划 - Wikipedia](https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
