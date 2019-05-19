@@ -45,7 +45,7 @@
     
     <title>
         
-            搭建个人博客 | 
+            后端弟弟认识的zookeeper | 
         
         Erieniu
     </title>
@@ -222,7 +222,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Erieniu">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/07/25/搭建个人博客/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2019/05/19/后端弟弟认识的zookeeper/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Erieniu">
@@ -237,16 +237,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/07/25/搭建个人博客/">
+    <meta property="og:url" content="http://yoursite.com/2019/05/19/后端弟弟认识的zookeeper/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="搭建个人博客 | Erieniu">
+    <meta property="og:title" content="后端弟弟认识的zookeeper | Erieniu">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content>
     
 
     
-        <meta property="article:published_time" content="Wed Jul 25 2018 14:50:40 GMT+0800">
-        <meta property="article:modified_time" content="Tue Apr 09 2019 14:40:04 GMT+0800">
+        <meta property="article:published_time" content="Sun May 19 2019 22:01:13 GMT+0800">
+        <meta property="article:modified_time" content="Sun May 19 2019 23:36:16 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -254,7 +254,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/07/25/搭建个人博客/index.html">
+        <link rel="canonical" href="http://yoursite.com/2019/05/19/后端弟弟认识的zookeeper/index.html">
     
 
     <!-- Structured-data for SEO -->
@@ -317,7 +317,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Django-搭建个人博客"><span class="post-toc-number">1.</span> <span class="post-toc-text">Django 搭建个人博客</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#角色"><span class="post-toc-number">2.</span> <span class="post-toc-text">角色</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态"><span class="post-toc-number">3.</span> <span class="post-toc-text">状态</span></a></li></ol>
     </ul>
     
 
@@ -349,7 +349,7 @@
         
     
             <p class="article-headline-p">
-                搭建个人博客
+                后端弟弟认识的zookeeper
             </p>
         </div>
 
@@ -368,7 +368,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Erien</strong>
-        <span>7月 25, 2018</span>
+        <span>5月 19, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -428,108 +428,18 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="Django-搭建个人博客"><a href="#Django-搭建个人博客" class="headerlink" title="Django 搭建个人博客"></a>Django 搭建个人博客</h1><hr>
-<p>第一次使用Django搭建网页，和PHP有相似的地方，后端渲染（数据绑定）返回前端页面。但是相比较于PHP，django有更为明显和直接的优点：</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>第一次听说zookeeper，是activeMQ和kafka里的一个任务调度协调中心。</p>
 <blockquote>
-<ul>
-<li>强大的模板渲染</li>
-<li>自身的数据库模型</li>
-<li>代码整体迁移能力整体</li>
-<li>更大型的网站架构和插件</li>
-</ul>
+<p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。（via百度百科）</p>
 </blockquote>
-<p>环境：macos + python3.6 + django2.0 + pycharm2018.2<br><br>使用Pycharm进行Django项目的初始化，免除了</p>
-<pre><code class="python">$ sudo python3 django-admin.py startproject blog
-</code></pre>
-<p>这样一个过程</p>
-<hr>
-<p>首先新建我们所需要用到的文章应用（app）</p>
-<pre><code class="python">$ sudo python3 manage.py startapp article
-</code></pre>
-<p>在setting文件中添加article应用，并设置好一篇文章的数据库储存方式。这里我采用的是</p>
-<pre><code class="python">class Article(models.Model):
-    title = models.CharField(u&#39;标题&#39;, max_length=50)
-    id = models.AutoField(primary_key=True)
-    pub_date = models.DateTimeField(u&#39;发布日期&#39;,auto_now_add=True, editable=False)
-    edit_date = models.DateTimeField(u&#39;最后修改日期&#39;, auto_now=True, editable=False)
-    content = models.TextField(blank=True, null=True)
-</code></pre>
-<p>这样的一个数据格式，通过主键ID拿到文章数据。<br><br><br><br>首先设置root账户以及绑定后台对Article模型的管理</p>
-<pre><code class="python">$ sudo python3 manage.py createsuperuser
-</code></pre>
-<p>并完成后续，同时注册模型</p>
-<pre><code class="python">#/article/admin.py
-from django.contrib import admin
-from .models import Article
-
-admin.site.register(Article)
-
-</code></pre>
-<p>django为我们提供了一个很好的后台管理系统，这里我用来做文章的发布和修改。<br></p>
-<hr>
-<p>整个博客有两个页面<code>index</code>和<code>article</code>分别是主页和文章的详细内容。<br><br>主页通过</p>
-<pre><code class="python">def index(request):
-    Article_list = Article.objects.order_by(&#39;-pub_date&#39;)
-    template = loader.get_template(&#39;index/index.html&#39;)
-    context = {
-        &#39;list&#39;: Article_list,
-    }
-    return HttpResponse(template.render(context, request))
-</code></pre>
-<p>拉取文章列表并通过</p>
-<pre><code class="python">{% for article in list %}
-    #do sth..
-{% endfor %}
-</code></pre>
-<p>进行读取。<br><br><br>在article页面通过传入的参数</p>
-<pre><code class="python">def article(request, id_):
-    article_ = get_object_or_404(Article, id=id_)
-    article_.content = markdown.markdown(article_.content,
-extensions=[
-&#39;markdown.extensions.extra&#39;,
-&#39;markdown.extensions.codehilite&#39;,
-&#39;markdown.extensions.toc&#39;,
-])
-template = loader.get_template(&#39;article/article.html&#39;)
-    context = {
-        &#39;article&#39;: article_,
-    }
-    return HttpResponse(template.render(context,request))
-</code></pre>
-<p>拿到文章内容或抛出404<br>这里可以看到，我在文章详情页模板中使用了Markdown语法，是通过python中的 <a href="https://github.com/Python-Markdown/markdown" target="_blank" rel="noopener">Markdown</a> 解析库实现的。<br><br>在数据库中存放的是带有Markdown语法的文本，通过Markdown解析成为html语言后插入。<br><br>这里有两点需要注意的：</p>
-<blockquote>
-<ul>
-<li>django对html文本加载的阻止</li>
-<li>html标签的样式</li>
-</ul>
-</blockquote>
-<p>一般的框架都有防止xss注入的过程，关闭django的阻止可以让html代码成功加载</p>
-<pre><code class="python">{% autoescape off %}
-    {{ article.content }}
-{% endautoescape %}
-</code></pre>
-<p>然后，Markdown解析库并不会在生成html代码的时候给出css样式，所以 <code>⌘ + Alt + I</code> 打开Chrome的开发者工具对照每个html的类名将你喜欢的css样式写进相应的css文件中</p>
-<hr>
-<p>写markdown语法要有很好的对照，推荐 <a href="https://www.zybuluo.com/" target="_blank" rel="noopener">Cmd Markdown编辑阅读器</a> 除了注册才能保存其他我觉得都很好。<br><br><br><img src="https://www.zybuluo.com/static/img/toolbar-editor.png" alt="tool-editor"><br><img src="https://www.zybuluo.com/static/img/toolbar-manager.jpg" alt="tool-manager">有很好的编辑栏<br></p>
-<hr>
-<p>万事预备只欠东风，准备一下就可以放到服务器上</p>
-<blockquote>
-<ul>
-<li>制作数据库迁移文件</li>
-<li>关闭DEBUG模式</li>
-<li>修改可访问域名</li>
-</ul>
-</blockquote>
-<p>制作迁移文件</p>
-<pre><code class="python">$ sudo python3 manage.py makemigrations
-</code></pre>
-<p>然后在setting文件中DEBUG改为False<br><br>下面allowed_host改为[‘*’]任意域名模式<br><br><br>移动到服务器后进行数据库合并</p>
-<pre><code class="python">$ sudo python manage.py migrate
-</code></pre>
-<p>最后由于关闭了debug模式，常规下是无法读取静态文件的，开启端口监听的时候选择不安全模式。</p>
-<pre><code class="python">$ sudo python manage.py runserver 0.0.0.0:80 --insecure
-</code></pre>
-<p>就可以啦！</p>
+<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p>从简介看得出，zk的功能是维持一个分布式集群的秩序的存在，在zk的模型里，有三种角色「Leader」「Follower」「Observer」。</p>
+<p>一个Leader为整个任务调度中心的管理者，负责整个zk中心的管理、决策、状态储存.</p>
+<p>一个Follower就是一个普通的子节点，负责zk中主要业务的操作，包括接受数据，处理数据，处理由leader发起的事务（投票）。</p>
+<p>Observer其实可以理解为是一个follower的slave节点，可以接收数据，处理数据的任务将转发给leader，无法进行事务的处理，本质上是为了提高整个zk中心的数据处理速度。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20141108/20141108213346_540.jpg" alt="出处见连接"></p>
+<h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><p>当一个非单节点zk由我们的配置文件启动时，会进入初始化选举leader流程。每个非observer节点会进入looking状态，可以以自身为主发起一个选举请求并全域广播，每个节点负责统计自己选举的票数，当票数过半时当选，当选后执行leader功能更新状态为leading/following并全域广播。</p>
+<p>所有的非leader节点会定时向leader发送心跳包以维持连接和确认leader的运行状态。</p>
+<p>如果此时leader挂掉或者由于连接过多阻塞了其他连接，无法接受心跳包的时候，节点会重新进入looking状态发起选举，此时选举只有超过半票才能够当选（以保证大部分节点和主节点丢失连接而非偶然），当新节点上任后，同样会进行全域广播更新状态，但之后还会进行数据更新，向全域各个节点收集当前最大的zxid（事务id，用于区分事务先后）来更新数据。</p>
 
         
     
@@ -550,21 +460,13 @@ template = loader.get_template(&#39;article/article.html&#39;)
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/07/25/高版本macOS中安装软件权限注意事项/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/07/25/Ubuntu搭建php+apache细节/" id="post_nav-older" class="next-content">
+        <a href="/2019/05/12/php第三方包管理/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
