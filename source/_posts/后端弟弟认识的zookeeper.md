@@ -34,6 +34,10 @@ Consistency一致性，Availability可用性，Partition tolerance分区耐受�
 以上的说法是在满足分区在P原则的前提下进行的，zk对每个节点采用数据拷贝的模式，即所有的数据节点的数据都是相同的
 
 ### 数据改动更新
+在zk中，CAP的类似实现成为ZAB协议（Zookeeper Atomic Broadcast原子广播协议）
+
+![](https://img-blog.csdn.net/20170825173220443?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVuY2hlbmJiMDQzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 当有客户端连接到对外提供服务的节点并传入修改请求时，非leader节点会将请求转发给leader节点，收到请求后leader会发起一个全局提议并全局广播给所有follower节点（observer节点无投票权），其中，leader和follower之间的通信也是通过消息队列进行的，所以由leader发起的所有提起都是自带顺序的。follower节点从队列中拿出提议并通过向leader节点发送ack确认请求表示确认该次提议，或在本地直接标记为丢弃该请求。当leader受到超过半数的ack确认后立即对该提议进行commit写入数据，然后向全局所有节点发送commit通知更新请求
 
 
