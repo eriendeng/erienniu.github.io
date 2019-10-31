@@ -317,7 +317,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#角色"><span class="post-toc-number">2.</span> <span class="post-toc-text">角色</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态"><span class="post-toc-number">3.</span> <span class="post-toc-text">状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CAP原理"><span class="post-toc-number">4.</span> <span class="post-toc-text">CAP原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据改动更新"><span class="post-toc-number">5.</span> <span class="post-toc-text">数据改动更新</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言#</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">2.</span> <span class="post-toc-text">角色#</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">3.</span> <span class="post-toc-text">状态#</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">4.</span> <span class="post-toc-text">CAP原理#</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">5.</span> <span class="post-toc-text">数据改动更新#</span></a></li></ol>
     </ul>
     
 
@@ -428,21 +428,21 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>第一次听说zookeeper，是activeMQ和kafka里的一个任务调度协调中心。</p>
+        <h3><span id="qian-yan">前言</span><a href="#qian-yan" class="header-anchor">#</a></h3><p>第一次听说zookeeper，是activeMQ和kafka里的一个任务调度协调中心。</p>
 <blockquote>
 <p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。（via百度百科）</p>
 </blockquote>
-<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p>从简介看得出，zk的功能是维持一个分布式集群的秩序的存在，在zk的模型里，有三种角色「Leader」「Follower」「Observer」。</p>
+<h3><span id="jiao-se">角色</span><a href="#jiao-se" class="header-anchor">#</a></h3><p>从简介看得出，zk的功能是维持一个分布式集群的秩序的存在，在zk的模型里，有三种角色「Leader」「Follower」「Observer」。</p>
 <p>一个Leader为整个任务调度中心的管理者，负责整个zk中心的管理、决策、状态储存.</p>
 <p>一个Follower就是一个普通的子节点，负责zk中主要业务的操作，包括接受数据，处理数据，处理由leader发起的事务（投票）。</p>
 <p>Observer其实可以理解为是一个follower的slave节点，可以接收数据，处理数据的任务将转发给leader，无法进行事务的处理，本质上是为了提高整个zk中心的数据处理速度。</p>
 <p><img src="http://static.open-open.com/lib/uploadImg/20141108/20141108213346_540.jpg" alt="出处见连接"></p>
-<h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><p>当一个非单节点zk由我们的配置文件启动时，会进入初始化选举leader流程。每个非observer节点会进入looking状态，可以以自身为主发起一个选举请求并全域广播，每个节点负责统计自己选举的票数，当票数过半时当选，当选后执行leader功能更新状态为leading/following并全域广播。</p>
+<h3><span id="zhuang-tai">状态</span><a href="#zhuang-tai" class="header-anchor">#</a></h3><p>当一个非单节点zk由我们的配置文件启动时，会进入初始化选举leader流程。每个非observer节点会进入looking状态，可以以自身为主发起一个选举请求并全域广播，每个节点负责统计自己选举的票数，当票数过半时当选，当选后执行leader功能更新状态为leading/following并全域广播。</p>
 <p>所有的非leader节点会定时向leader发送心跳包以维持连接和确认leader的运行状态。</p>
 <p>如果此时leader挂掉或者由于连接过多阻塞了其他连接，无法接受心跳包的时候，所有节点会重新进入looking状态发起选举，但只有空闲状态下的节点能够发起选举（下面会解释空闲）。此时选举只有超过半票才能够当选（以保证大部分节点和主节点丢失连接而非偶然），当新节点上任后，同样会进行全域广播更新状态，但之后还会进行数据更新，向全域各个节点广播自己最大的zxid（事务id，用于区分事务先后），由其他节点来选择更新或者回退数据。</p>
-<h3 id="CAP原理"><a href="#CAP原理" class="headerlink" title="CAP原理"></a>CAP原理</h3><p>Consistency一致性，Availability可用性，Partition tolerance分区耐受性。一般而言，CA之间不能同时成立，即在分布式架构中，无法同时保证整个系统的高可用性和强一致性。在满足一致性的前提下，系统读写过程需要加锁或者添加事件id，这时便会降低整个系统的效率或者产生冗余的数据。如果优先，满足高可用性，那势必不能对资源进行加锁操作，从而不满足强一致性。</p>
+<h3><span id="cap-yuan-li">CAP原理</span><a href="#cap-yuan-li" class="header-anchor">#</a></h3><p>Consistency一致性，Availability可用性，Partition tolerance分区耐受性。一般而言，CA之间不能同时成立，即在分布式架构中，无法同时保证整个系统的高可用性和强一致性。在满足一致性的前提下，系统读写过程需要加锁或者添加事件id，这时便会降低整个系统的效率或者产生冗余的数据。如果优先，满足高可用性，那势必不能对资源进行加锁操作，从而不满足强一致性。</p>
 <p>以上的说法是在满足分区在P原则的前提下进行的，zk对每个节点采用数据拷贝的模式，即所有的数据节点的数据都是相同的</p>
-<h3 id="数据改动更新"><a href="#数据改动更新" class="headerlink" title="数据改动更新"></a>数据改动更新</h3><p>在zk中，CAP的类似实现成为ZAB协议（Zookeeper Atomic Broadcast原子广播协议）</p>
+<h3><span id="shu-ju-gai-dong-geng-xin">数据改动更新</span><a href="#shu-ju-gai-dong-geng-xin" class="header-anchor">#</a></h3><p>在zk中，CAP的类似实现成为ZAB协议（Zookeeper Atomic Broadcast原子广播协议）</p>
 <p><img src="https://img-blog.csdn.net/20170825173220443?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVuY2hlbmJiMDQzMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt></p>
 <p>当有客户端连接到对外提供服务的节点并传入修改请求时，非leader节点会将请求转发给leader节点，收到请求后leader会发起一个全局提议并全局广播给所有follower节点（observer节点无投票权），其中，leader和follower之间的通信也是通过消息队列进行的，所以由leader发起的所有提起都是自带顺序的。follower节点从队列中拿出提议并通过向leader节点发送ack确认请求表示确认该次提议，或在本地直接标记为丢弃该请求。当leader受到超过半数的ack确认后立即对该提议进行commit写入数据，然后向全局所有节点发送commit通知更新请求</p>
 <ul>

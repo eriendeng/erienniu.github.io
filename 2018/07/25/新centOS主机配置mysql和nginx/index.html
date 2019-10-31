@@ -317,7 +317,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#新centOS主机配置mysql和nginx"><span class="post-toc-number">1.</span> <span class="post-toc-text">新centOS主机配置mysql和nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">mysql</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Nginx"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Nginx</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">新centOS主机配置mysql和nginx#</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">mysql#</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Nginx#</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -428,8 +428,8 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="新centOS主机配置mysql和nginx"><a href="#新centOS主机配置mysql和nginx" class="headerlink" title="新centOS主机配置mysql和nginx"></a>新centOS主机配置mysql和nginx</h1><hr>
-<h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a><em>mysql</em></h2><pre><code>//获取版本安装repo 这里安装mysql57
+        <h1><span id="xin-centos-zhu-ji-pei-zhi-mysql-he-nginx">新centOS主机配置mysql和nginx</span><a href="#xin-centos-zhu-ji-pei-zhi-mysql-he-nginx" class="header-anchor">#</a></h1><hr>
+<h2><span id="mysql"><em>mysql</em></span><a href="#mysql" class="header-anchor">#</a></h2><pre><code>//获取版本安装repo 这里安装mysql57
 [user]# wget http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm
 [user]# rpm -ivh mysql57-community-release-el7-8.noarch.rpm
 //安装后续服务端 用yum神器
@@ -446,7 +446,7 @@ mysql&gt; alter user user() indentified by &#39;NEW PASSWORD&#39;;
 mysql&gt; update mysql.user host = &#39;%&#39; where user = &#39;root&#39;;
 
 </code></pre><hr>
-<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a><em>Nginx</em></h2><pre><code>
+<h2><span id="nginx"><em>Nginx</em></span><a href="#nginx" class="header-anchor">#</a></h2><pre><code>
 //要求sudo安装 yes到底
 [user]# sudo yum install nginx
 

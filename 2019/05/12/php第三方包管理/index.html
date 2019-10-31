@@ -317,7 +317,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#传统的包引入"><span class="post-toc-number">2.</span> <span class="post-toc-text">传统的包引入</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新的包引入方式"><span class="post-toc-number">3.</span> <span class="post-toc-text">新的包引入方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#autoload的改良"><span class="post-toc-number">4.</span> <span class="post-toc-text">autoload的改良</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#包管理工具Composer"><span class="post-toc-number">5.</span> <span class="post-toc-text">包管理工具Composer</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#composer引入的版本号"><span class="post-toc-number">5.0.1.</span> <span class="post-toc-text">composer引入的版本号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意"><span class="post-toc-number">5.0.2.</span> <span class="post-toc-text">注意</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言#</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">2.</span> <span class="post-toc-text">传统的包引入#</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">3.</span> <span class="post-toc-text">新的包引入方式#</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">4.</span> <span class="post-toc-text">autoload的改良#</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">5.</span> <span class="post-toc-text">包管理工具Composer#</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">5.0.1.</span> <span class="post-toc-text">composer引入的版本号#</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">5.0.2.</span> <span class="post-toc-text">注意#</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -428,8 +428,8 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在编写程序的时候，我们会用到别人的第三方包，俗称轮子。如何正确引入一个第三方的包，且正确合理的放置，是一个值得规范的事情。</p>
-<h2 id="传统的包引入"><a href="#传统的包引入" class="headerlink" title="传统的包引入"></a>传统的包引入</h2><pre><code class="php">include &quot;the/path/of/file.php&quot;;
+        <h2><span id="qian-yan">前言</span><a href="#qian-yan" class="header-anchor">#</a></h2><p>在编写程序的时候，我们会用到别人的第三方包，俗称轮子。如何正确引入一个第三方的包，且正确合理的放置，是一个值得规范的事情。</p>
+<h2><span id="chuan-tong-de-bao-yin-ru">传统的包引入</span><a href="#chuan-tong-de-bao-yin-ru" class="header-anchor">#</a></h2><pre><code class="php">include &quot;the/path/of/file.php&quot;;
 require &quot;the/path/of/file.php&quot;;
 include_once &quot;the/path/of/file.php&quot;;
 require_once &quot;the/path/of/file.php&quot;;
@@ -438,7 +438,7 @@ function_name();
 ?&gt;
 </code></pre>
 <p>优点：我们比较熟悉包内结构，文件位置<br><br>缺点：我们必须清楚文件结构；引入大量的<code>inlude</code>,<code>require</code>语句；不能实现懒加载</p>
-<h2 id="新的包引入方式"><a href="#新的包引入方式" class="headerlink" title="新的包引入方式"></a>新的包引入方式</h2><p><code>__autoload()</code>魔术方法：当运行时调用了当前没有声明过的类时，自动运行该函数。<br></p>
+<h2><span id="xin-de-bao-yin-ru-fang-shi">新的包引入方式</span><a href="#xin-de-bao-yin-ru-fang-shi" class="header-anchor">#</a></h2><p><code>__autoload()</code>魔术方法：当运行时调用了当前没有声明过的类时，自动运行该函数。<br></p>
 <pre><code class="php">&lt;?php
 
 function __autoload($class_name){
@@ -448,7 +448,7 @@ function __autoload($class_name){
 (new hello())-&gt;sayHello();
 </code></pre>
 <p>我们可以在我们文件中重新定义这个函数，并添加我们函数中的逻辑去实现文件的加载，这种方式属于懒加载，一定程度上能节省资源。<br><br><br><code>__autoload()</code>函数必须传入参数（尽管我们也许不会使用）<br><br>在原本autoload中，同一个文件中只能支持同时存在一个autoload函数，重复定义会引起panic。</p>
-<h2 id="autoload的改良"><a href="#autoload的改良" class="headerlink" title="autoload的改良"></a>autoload的改良</h2><p>在php5.5后，引入了spl改良版的autoload系列函数，使用<code>spl_autoload_register</code>或者<code>set_include_path</code>和<code>spl_autoload</code>的组合可以很快引入某路径下的类。</p>
+<h2><span id="autoload-de-gai-liang">autoload的改良</span><a href="#autoload-de-gai-liang" class="header-anchor">#</a></h2><p>在php5.5后，引入了spl改良版的autoload系列函数，使用<code>spl_autoload_register</code>或者<code>set_include_path</code>和<code>spl_autoload</code>的组合可以很快引入某路径下的类。</p>
 <pre><code class="php">&lt;?php
 //
 //spl_autoload_register(function ($class_name){
@@ -463,7 +463,7 @@ spl_autoload(&quot;class2&quot;);
 (new hello())-&gt;sayHello();
 </code></pre>
 <p>优点：懒加载，重新定义/抽象了require和include<br><br>缺点：仍无法解决大量的引入代码问题；可能产生循环引用</p>
-<h2 id="包管理工具Composer"><a href="#包管理工具Composer" class="headerlink" title="包管理工具Composer"></a>包管理工具Composer</h2><p><a href="https://getcomposer.org/" target="_blank" rel="noopener">composer</a>是php项目中的一个开源第三方包管理工具，是一个让人眼前一亮的工具，它将autoload的思想发挥到了新的层次。</p>
+<h2><span id="bao-guan-li-gong-ju-composer">包管理工具Composer</span><a href="#bao-guan-li-gong-ju-composer" class="header-anchor">#</a></h2><p><a href="https://getcomposer.org/" target="_blank" rel="noopener">composer</a>是php项目中的一个开源第三方包管理工具，是一个让人眼前一亮的工具，它将autoload的思想发挥到了新的层次。</p>
 <p>一个使用composer来管理第三方包的项目通常会在项目根目录下包含vender文件夹，里面放有我们的第三方包。</p>
 <p>composer使用方法：</p>
 <pre><code>composer init//初始化一个目录成为composer管理项目
@@ -491,7 +491,7 @@ composer remove &quot;xxxx&quot;
 <ul>
 <li><a href="https://www.php.net/manual/zh/language.namespaces.rationale.php" target="_blank" rel="noopener">命名空间</a> </li>
 </ul>
-<h4 id="composer引入的版本号"><a href="#composer引入的版本号" class="headerlink" title="composer引入的版本号"></a>composer引入的版本号</h4><table>
+<h4><span id="composer-yin-ru-de-ban-ben-hao">composer引入的版本号</span><a href="#composer-yin-ru-de-ban-ben-hao" class="header-anchor">#</a></h4><table>
 <thead>
 <tr>
 <th>表达式</th>
@@ -540,7 +540,7 @@ composer remove &quot;xxxx&quot;
 </tbody>
 </table>
 <p>多个条件支持,和|分割，代表and or逻辑运算，如<code>composer require xxx ^1.2.0@dev,!=1.2.3</code></p>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>不要随意改动composer.lock文件中的内容<br><br>注意将vender文件夹从版本控制中去除</p>
+<h4><span id="zhu-yi">注意</span><a href="#zhu-yi" class="header-anchor">#</a></h4><p>不要随意改动composer.lock文件中的内容<br><br>注意将vender文件夹从版本控制中去除</p>
 
         
     

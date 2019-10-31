@@ -317,7 +317,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Docker"><span class="post-toc-number">1.</span> <span class="post-toc-text">Docker</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境打包"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">环境打包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单机多部署"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">单机多部署</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">Docker#</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">环境打包#</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">单机多部署#</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -428,8 +428,8 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>Docker是由Golang开发的轻量级虚拟容器技术，主要目的是解决在生产环境中的环境、依赖配置问题和单机多部署的性能提升问题。</p>
-<h3 id="环境打包"><a href="#环境打包" class="headerlink" title="环境打包"></a>环境打包</h3><p>在docker环境构建时，我们通过以下命令构建新的容器</p>
+        <h2><span id="docker">Docker</span><a href="#docker" class="header-anchor">#</a></h2><p>Docker是由Golang开发的轻量级虚拟容器技术，主要目的是解决在生产环境中的环境、依赖配置问题和单机多部署的性能提升问题。</p>
+<h3><span id="huan-jing-da-bao">环境打包</span><a href="#huan-jing-da-bao" class="header-anchor">#</a></h3><p>在docker环境构建时，我们通过以下命令构建新的容器</p>
 <pre><code>docker run {imageName:Version/Tag} {command}
 </code></pre><p>我们可以通过docker打包解决环境差别问题，下面以php-fpm环境为例：<br><a href="http://www.runoob.com/docker/docker-install-php.html" target="_blank" rel="noopener">菜鸟教程</a></p>
 <ul>
@@ -437,7 +437,7 @@
 </ul>
 <p>ADD <a href="http://nginx.org/download/nginx-1.15.0.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.15.0.tar.gz</a><br>RUN tar zxf nginx-1.15.0.tar.gz<br>RUN mkdir /usr/local/nginx<br>COPY ./nginx-1.15.0 /usr/local/nginx<br><code>`</code> </p>
 <p>这样子我们就完成了在一个docker文件中配置nginx，只要在docker中启动这个文件就可以完成构建。</p>
-<h3 id="单机多部署"><a href="#单机多部署" class="headerlink" title="单机多部署"></a>单机多部署</h3><p>很容易可以想到，在同一台主机上通过docker可以简单部署多个相同的服务来模拟分布式，发挥一台主机的性能优势。在以前，会采用虚拟机的方式去进行部署。<br>虚拟机和docker差别如下<br><img src="https://img-blog.csdn.net/20180711090727241?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppbmd6aHVuYmlhbmNoZW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="性能差别"><br>很容易看出来，docker绕过了系统层面的交互，使得每个容器能够直接地和docker引擎（类似中间件）进行通信，从而避免了多次请求底层系统的内存开销。<br>在性能方面，docker的启动时间简直令人发指，一个基本的LNMP的docker服务的启动仅仅需要7秒左右，但如果这个效果放在虚拟机中，可能会翻好几倍。<br>在储存方面，docker在大部分的语言、数据库镜像的处理上，实现了简易版的体积，例如在数据库方面，数据储存的切片并不会直接储存在docker的“包”里，而是由docker层面提供一个直接和系统交互的切片空间储存，所以尽管在大型服务上线很久之后，我们查看docker的体积也仅仅占几十M左右。</p>
+<h3><span id="dan-ji-duo-bu-shu">单机多部署</span><a href="#dan-ji-duo-bu-shu" class="header-anchor">#</a></h3><p>很容易可以想到，在同一台主机上通过docker可以简单部署多个相同的服务来模拟分布式，发挥一台主机的性能优势。在以前，会采用虚拟机的方式去进行部署。<br>虚拟机和docker差别如下<br><img src="https://img-blog.csdn.net/20180711090727241?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppbmd6aHVuYmlhbmNoZW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="性能差别"><br>很容易看出来，docker绕过了系统层面的交互，使得每个容器能够直接地和docker引擎（类似中间件）进行通信，从而避免了多次请求底层系统的内存开销。<br>在性能方面，docker的启动时间简直令人发指，一个基本的LNMP的docker服务的启动仅仅需要7秒左右，但如果这个效果放在虚拟机中，可能会翻好几倍。<br>在储存方面，docker在大部分的语言、数据库镜像的处理上，实现了简易版的体积，例如在数据库方面，数据储存的切片并不会直接储存在docker的“包”里，而是由docker层面提供一个直接和系统交互的切片空间储存，所以尽管在大型服务上线很久之后，我们查看docker的体积也仅仅占几十M左右。</p>
 <p>（待更新）</p>
 
         

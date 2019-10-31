@@ -317,7 +317,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js的异步调用精髓和阻止方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">js的异步调用精髓和阻止方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异步调用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">异步调用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#回调阻止"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">回调阻止</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">js的异步调用精髓和阻止方法#</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">异步调用#</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">回调阻止#</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -428,7 +428,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="js的异步调用精髓和阻止方法"><a href="#js的异步调用精髓和阻止方法" class="headerlink" title="js的异步调用精髓和阻止方法"></a>js的异步调用精髓和阻止方法</h1><h2 id="异步调用"><a href="#异步调用" class="headerlink" title="异步调用"></a>异步调用</h2><blockquote>
+        <h1><span id="js-de-yi-bu-diao-yong-jing-sui-he-zu-zhi-fang-fa">js的异步调用精髓和阻止方法</span><a href="#js-de-yi-bu-diao-yong-jing-sui-he-zu-zhi-fang-fa" class="header-anchor">#</a></h1><h2><span id="yi-bu-diao-yong">异步调用</span><a href="#yi-bu-diao-yong" class="header-anchor">#</a></h2><blockquote>
 <p>JavaScript引擎是单线程运行的,浏览器无论在什么时候都只且只有一个线程在运行JavaScript程序。<br>JavaScript引擎用单线程运行也是有意义的,单线程不必理会线程同步这些复杂的问题,问题得到简化。</p>
 </blockquote>
 <p>为了弥补js单线程机制，引入异步调用机制<br><img src="http://images2015.cnblogs.com/blog/638135/201607/638135-20160721111145247-341211472.png" alt="js流程"></p>
@@ -451,7 +451,7 @@ XXX: function(){
 <p>优点：将剩下待处理的交给callback，延后function结束时间，类似创建监视器。<br>缺点：下一个function运行所需的数据仍在回调加载中，会给出错误。</p>
 </blockquote>
 <p><a href="https://blog.csdn.net/qdq2014/article/details/72383725/" target="_blank" rel="noopener">js异步机制</a></p>
-<h2 id="回调阻止"><a href="#回调阻止" class="headerlink" title="回调阻止"></a>回调阻止</h2><p>对于上面的缺点，一般有两种方法规避。</p>
+<h2><span id="hui-diao-zu-zhi">回调阻止</span><a href="#hui-diao-zu-zhi" class="header-anchor">#</a></h2><p>对于上面的缺点，一般有两种方法规避。</p>
 <blockquote>
 <p>将下一个进行的function写入上一个function的callback中<br>引入Promise对象</p>
 </blockquote>
